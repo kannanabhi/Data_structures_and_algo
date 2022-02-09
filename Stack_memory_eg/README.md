@@ -12,7 +12,7 @@ termination of the recursion and repeat the test until you get a runtime error.
 (c) Summarize your understanding (for yourself) of the stack space allocated.
 
 
-##Instructions
+## Instructions
 
-Run the file driver.c 
+Run the file driver.c.  
 Fork and edit for better understanding.
