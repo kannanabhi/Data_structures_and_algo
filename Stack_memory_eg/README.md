@@ -10,3 +10,9 @@ format specifier (in printf) to print an address as unsigned int.
 p(n) { … p(n+1) … }. Print the address of n each time p is invoked. Modify the test for
 termination of the recursion and repeat the test until you get a runtime error.
 (c) Summarize your understanding (for yourself) of the stack space allocated.
+
+
+##Instructions
+
+Run the file driver.c 
+Fork and edit for better understanding.
