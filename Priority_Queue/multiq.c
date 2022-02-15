@@ -12,7 +12,7 @@ MultiQ createMQ(int num) {
 
 MultiQ addMQ(MultiQ mq,Task t) {
 
-    if(t.priority<mq.number && t.priority>0) {
+    if(t.priority<=mq.number && t.priority>0) {
         mq.queue[t.priority-1]=addQ(mq.queue[t.priority-1],t.TaskID);
     } 
     else {
