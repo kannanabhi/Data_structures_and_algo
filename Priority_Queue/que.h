@@ -23,3 +23,4 @@ int front(QUEUE q);              //returns the element in the front of the queue
 QUEUE addQ(QUEUE q,int e);       //adds e to the rear of the queue, return the modified queue
 int lengthQ(QUEUE q);            //return the length of the queue
 
+void printQ(QUEUE q) ;

@@ -44,9 +44,13 @@ QUEUE addQ(QUEUE q,int e) {
         return q;
     }
     else if(q.size>0) {
-        temp->next=q.front;
+
         temp->ele=e;
-        q.front=temp;
+        q.rear->next=temp;
+        q.rear=temp;
+        q.rear->next=NULL;
+
+
         q.size++;
         return q;
     }
@@ -59,4 +63,16 @@ QUEUE addQ(QUEUE q,int e) {
 
 int lengthQ(QUEUE q) {
     return q.size;
+}
+
+
+void printQ(QUEUE q) {
+    NODE temp;
+    temp=q.front;
+    printf("\n [");
+    while(temp!=NULL) {
+        printf("%d,",temp->ele);
+        temp=temp->next;
+    }
+    printf("]\n");
 }
