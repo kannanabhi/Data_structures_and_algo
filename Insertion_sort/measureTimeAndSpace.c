@@ -23,7 +23,7 @@ void main() {
     struct collect ini;
     CARD_DETIAL sorted;
     printf("enter the filename:");
-    char temp1[17]="dependency_files/";
+    char temp1[]="dependency_files/";
     char temp2[10];
     scanf("%s",temp2);
     printf("%s",strcat(temp1,temp2));
