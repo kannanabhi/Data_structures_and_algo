@@ -3,8 +3,8 @@
 using namespace std;
 
 int main() {
-    double ch= pow(10,2);
-    cout<<ch<<endl;
+    int a;
+    cout<<sizeof(a);
 
     return 1;
 }
