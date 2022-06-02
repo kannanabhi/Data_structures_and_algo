@@ -2,7 +2,10 @@
 #include<math.h>
 using namespace std;
 int main() {
-    int n,i=0,ans=0;
+    int n,i=0;
+    double ans=0;
+
+
     cout<<"enter the decimal number"<<endl;
     cin>>n;
 
@@ -12,6 +15,7 @@ int main() {
         }
         i++;
         n=n>>1;
+       
     }
     cout<<ans;
 }
