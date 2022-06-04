@@ -16,7 +16,19 @@ void printArray(int arr[],int size) {
     cout<<endl;
 }
 void insertionSort(int arr[],int size) {
-   
+   for(int i=1;i<size;i++) {
+       int current=arr[i],j;
+       for(j=i-1;j>=0;j--){
+           //shift one place to the right if condition matches
+           if(arr[j]>current) {
+               arr[j+1]=arr[j];
+           }
+           else {
+               break;
+           }
+       }
+       arr[j+1]=current;
+   }
 
 }
 

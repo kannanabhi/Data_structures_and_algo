@@ -16,7 +16,15 @@ void printArray(int arr[],int size) {
     cout<<endl;
 }
 void selectionSort(int arr[],int size) {
-   
+   for(int i=0;i<size-1;i++) {
+       int smallest=i,j;
+       for(j=i+1;j<size;j++){
+            if(arr[j]<arr[smallest]) {
+                smallest=j;
+            }
+       }
+       swap(arr[i],arr[smallest]);
+   }
 
 }
 
