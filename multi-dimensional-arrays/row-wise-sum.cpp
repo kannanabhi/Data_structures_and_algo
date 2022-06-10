@@ -1,16 +1,16 @@
-#include<iostream>
+#include<iostream> 
 using namespace std;
 
-bool isPresent(int arr[][4],int target,int row, int col) {
+void printRowSum(int arr[][4],int row,int col) {
     for(int i=0;i<row;i++) {
+        int sum=0;
         for(int j=0;j<col;j++) {
-            if(arr[i][j]==target) {
-                return 1;
-            }
+            sum+=arr[i][j];
         }
+        cout<<"sum of the "<<i<<" th row is "<<sum<<endl;
     }
-    return 0;
 }
+
 
 int main() {
     int arr[3][4];
@@ -29,14 +29,9 @@ int main() {
         cout<<endl;
     }
 
-    int target;
-    cout<<endl<<"element to search for : "<<endl;
-    cin>>target;
-    if(isPresent(arr,target,3,4)) {
-        cout<<"eleement found"<<endl;
-    }
-    else {
-        cout<<"element not found"<<endl;
-    }
+    cout<<"the row-wise sum is as follows"<<endl;
+    printRowSum(arr,3,4);
+
     return 1;
+
 }
