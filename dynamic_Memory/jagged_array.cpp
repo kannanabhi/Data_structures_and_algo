@@ -23,7 +23,7 @@ int main() {
         for(int j=0;j<n[i];j++) {
             cin>>arr[i][j];
         }
-        cout<<endl;
+        //cout<<endl;
     }
 
     //taking output
