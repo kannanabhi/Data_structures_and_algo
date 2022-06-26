@@ -1,5 +1,12 @@
 //the mergeSort algo which is done inplace
 
+
+/*   
+
+This code is NOT complete
+
+*/
+
 #include<iostream>
 using namespace std;
 
