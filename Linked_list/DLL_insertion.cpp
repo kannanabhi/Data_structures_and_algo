@@ -26,7 +26,9 @@ void print(node* head) {
 
 int getLength(node* head) {
     node* temp=head;
-    int count=1;
+    int count=0;
+
+
     while(temp!=NULL) {
         temp=temp->next;
         count++;
@@ -105,6 +107,8 @@ int main() {
 
     insertPos(head,tail,4,50);
     print(head);
+
+    cout<<"length of the linked list is "<<getLength(head)<<endl;
 
 
     return 0;
