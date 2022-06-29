@@ -1,7 +1,4 @@
-
-    //insert at head
-    InsertAtHead(head,10);
+    deleteNode(head,tail,3);
     print(head);
-    InsertAtHead(head,20);
-    InsertAtHead(head,30);
-    print(head);
+    cout<<"value of head is "<<head->data<<endl;
+    cout<<"value of tail is "<<tail->data<<endl;

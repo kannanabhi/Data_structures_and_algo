@@ -12,6 +12,14 @@ public:
         this->next=NULL;
         this->prev=NULL;
     }
+    ~node() {
+        int value=this->data;
+        if(this->next!=NULL) {
+            delete next;
+            next=NULL;
+        }
+        cout<<"memory is deleted for the value "<<value<<endl;
+    }
 };
 
 void print(node* head) {
@@ -25,7 +33,44 @@ void print(node* head) {
 }
 
 
+void deleteNode(node* &head,node* &tail,int position) {
+    node* curr=head;
+    node* previ=NULL;
 
+    if(position==1) {
+        //deletion of first node, thus move the head
+        head=curr->next;
+        curr->next->prev=NULL;
+        curr->next=NULL;
+        delete curr;
+        return;
+    }
+    else {
+        //deletion of non-first node
+        int count=1;
+        while(count<position) {
+            previ=curr;
+            curr=curr->next;
+            count++;
+        }
+
+        previ->next=curr->next;
+        if(curr->next==NULL) {
+            //if we are deleting the tail node
+            tail=previ;
+            curr->next=NULL;
+            curr->prev=NULL;  
+            delete curr;
+            return;  
+        }
+        curr->next->prev=curr->prev;
+        curr->next=NULL;
+        curr->prev=NULL;
+        delete curr;
+
+    }
+
+}
 
 
 
@@ -98,7 +143,26 @@ int main() {
     node* head=NULL;
     node* tail=NULL;
 
-
-    
+    insertPos(head,tail,1,10);
+    insertPos(head,tail,1,20);
+    insertPos(head,tail,3,30);
+    insertPos(head,tail,2,40);
+    insertPos(head,tail,5,50);
+    print(head);
+    cout<<"value of head is "<<head->data<<endl;
+    cout<<"value of tail is "<<tail->data<<endl;
+    print(head);
+    deleteNode(head,tail,1);
+    print(head);
+    cout<<"value of head is "<<head->data<<endl;
+    cout<<"value of tail is "<<tail->data<<endl;  
+    deleteNode(head,tail,2);
+    print(head);
+    cout<<"value of head is "<<head->data<<endl;
+    cout<<"value of tail is "<<tail->data<<endl;     
+    deleteNode(head,tail,3);
+    print(head);
+    cout<<"value of head is "<<head->data<<endl;
+    cout<<"value of tail is "<<tail->data<<endl;  
     return 0;
 }

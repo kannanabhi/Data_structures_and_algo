@@ -10,15 +10,19 @@ public:
         this->data=value;
         this->next=NULL;
     }
-
+    
     ~node() {
+        
         int value=this->data;
-        while(this->next!=NULL) {
+        
+        if(this->next!=NULL) {
             delete next;
             this->next=NULL;
         }
+        
         cout<<"the node with value of "<<value<<" is deleted"<<endl;
     }
+    
 };
 
 void display(node* &head) {
