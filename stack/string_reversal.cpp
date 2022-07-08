@@ -18,5 +18,4 @@ int main() {
     }
     cout<<"answer is "<<ans<<endl;
     return 0;
-
 }
