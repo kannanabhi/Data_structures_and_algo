@@ -52,7 +52,6 @@ public:
 };
 
 int main() {
-    //this is not optimal approach
-
-    //because the initial space in array is not getting re-used
+  //here we have not implemneted the circular nature of the queue
+  //this is only a basic queue
 }
