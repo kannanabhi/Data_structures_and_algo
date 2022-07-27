@@ -86,5 +86,3 @@ void levelOrderTraversal(node* root) {
     return 0;
  }
 
- //test input
- //10 5 0 -1 -1 7 -1 -1 15 12 -1 -1 20 -1 -1
