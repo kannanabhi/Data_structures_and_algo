@@ -14,6 +14,10 @@ public:
         this->right=NULL;
     }
 };
+
+//code for deletion
+
+//code for testing
 Node* insertIntoTree(Node* root,int value) {
     //base case
     if(root==NULL) {
@@ -39,7 +43,6 @@ void buildTree(Node* &root) {
     }
 }
 void levelOrderTraversal(Node* root) {
-
     queue<Node*> q;
     q.push(root);
     q.push(NULL);
@@ -63,29 +66,77 @@ void levelOrderTraversal(Node* root) {
             
         }
     }
-}    
-void pre_order(Node* root) {
+}
+Node* minVal(Node* root) {
     //base case
     if(root==NULL) 
-        return;
-    cout<<root->data<<" ";
-    pre_order(root->left);
-    pre_order(root->right);
+        return NULL;
+    Node* temp=root;
+    while(root->left!=NULL) {
+        temp=temp->left;
+    }
+    return temp;
 }
+Node * deleteNode(Node* root,int value) {
+    //base case
+    if(root==NULL)
+        return root;
+    //recursive traversal to find the element
+    if(root->data==value) {
+        //0 child case
+        if(root->left==NULL && root->right==NULL) {
+            delete root;
+            return NULL;
+        }
+        //1 child case
+        //left child 
+        if(root->left!=NULL && root->right==NULL) {
+            Node * temp=root->left;
+            delete root;
+            return temp;
+        }
+        //right child
+        if(root->right!=NULL && root->left==NULL) {
+            Node* temp=root->right;
+            delete root;
+            return temp;
+        }
+        //2 child case
+        if(root->right!=NULL && root->left!=NULL) {
+            //here we are finding the in order successor
+            int minimum=minVal(root->right)->data;
+            root->data=minimum;
+            root->right=deleteNode(root->right,minimum);
+            return root;
 
+        }
 
+    }
+    else if (root->data > value) {
+        root->left=deleteNode(root->left,value);
+        return root;
+    }
+    else {
+        root->right=deleteNode(root->right,value);
+        return root;
+    }
+
+}
 int main() {
     Node* root=NULL;
     cout<<"intput the elements to be entered"<<endl;
     /* test case for input
-    10 8 21 7 27 5 4 3 -1
+    10 5 15 0 7 12 20 -1
     */
     buildTree(root);
 
     //level order traversal for checking
     levelOrderTraversal(root);
     cout<<endl;
-    pre_order(root);
+    root=deleteNode(root,12);
+    cout<<endl;
+    levelOrderTraversal(root);
+    cout<<endl;
 
     return 1;
 }

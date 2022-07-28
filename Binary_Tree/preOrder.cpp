@@ -1,5 +1,6 @@
 #include<iostream>
 #include<queue>
+#include<stack>
 using namespace std;
 
 class node {
@@ -24,6 +25,22 @@ void preOrder(node* root) {
     preOrder(root->right);
     return;
 }
+void preOrder_iter(node* root) {
+    stack<node*> st;
+    if(root==NULL)
+        return;
+    node* temp=root;
+    while(temp!=NULL) {
+        cout<<temp->data<<" ";
+        st.push(temp);
+        temp=temp->left;
+
+        while(temp==NULL && !st.empty()) {
+            temp=st.top()->right;
+            st.pop();
+        }
+    }
+}
 
 //      TESTING CODE
 
@@ -42,6 +59,34 @@ node* buildTree(node* root) {
     cout<<"enter the data for inserting in right of "<<data<<endl;
     root->right=buildTree(root->right);
  }
+ void levelOrderTraversal(node* root) {
+
+    queue<node*> q;
+    q.push(root);
+    q.push(NULL);
+
+    while(!q.empty()) {
+        node* temp=q.front();
+        q.pop();
+
+        if(temp==NULL) {
+            cout<<endl;
+            if(!q.empty()) 
+                q.push(NULL);
+
+        }
+        else {
+            cout<<temp->data<<" ";
+            if(temp->left) 
+                q.push(temp->left);
+            if(temp->right)
+                q.push(temp->right);
+            
+        }
+    }
+
+}
+
  int main() {
     
     //creation of root node
@@ -49,7 +94,11 @@ node* buildTree(node* root) {
     //creation of binary tree
     root=buildTree(root);
 
+    levelOrderTraversal(root);
     preOrder(root);
+    cout<<"recursive ends"<<endl;
+
+    preOrder_iter(root);
     return 0;
  }
 

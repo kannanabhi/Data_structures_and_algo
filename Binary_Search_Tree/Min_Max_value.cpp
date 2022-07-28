@@ -1,8 +1,7 @@
 #include<iostream>
-#include<queue>
 using namespace std;
 
-class Node {
+class Node{
 public:
     int data;
     Node* left;
@@ -10,10 +9,33 @@ public:
 
     Node(int data) {
         this->data=data;
-        this->left=NULL;
         this->right=NULL;
+        this->left=NULL;
     }
 };
+
+//code for finding the MIN and MAX element
+Node* minVal(Node* root) {
+    Node* temp=root;
+    //base case
+    if(temp==NULL)
+        return NULL;
+    while(temp->left!=NULL) {
+        temp=temp->left;
+    }
+    return temp;
+}
+Node* maxVal(Node* root) {
+    Node* temp=root;
+    //base case
+    if(temp==NULL)
+        return NULL;
+    while(temp->right!=NULL)
+        temp=temp->right;
+    return temp;
+}
+
+//testing code
 Node* insertIntoTree(Node* root,int value) {
     //base case
     if(root==NULL) {
@@ -38,42 +60,6 @@ void buildTree(Node* &root) {
         cin>>value;
     }
 }
-void levelOrderTraversal(Node* root) {
-
-    queue<Node*> q;
-    q.push(root);
-    q.push(NULL);
-
-    while(!q.empty()) {
-        Node* temp=q.front();
-        q.pop();
-
-        if(temp==NULL) {
-            cout<<endl;
-            if(!q.empty()) 
-                q.push(NULL);
-
-        }
-        else {
-            cout<<temp->data<<" ";
-            if(temp->left) 
-                q.push(temp->left);
-            if(temp->right)
-                q.push(temp->right);
-            
-        }
-    }
-}    
-void pre_order(Node* root) {
-    //base case
-    if(root==NULL) 
-        return;
-    cout<<root->data<<" ";
-    pre_order(root->left);
-    pre_order(root->right);
-}
-
-
 int main() {
     Node* root=NULL;
     cout<<"intput the elements to be entered"<<endl;
@@ -83,9 +69,9 @@ int main() {
     buildTree(root);
 
     //level order traversal for checking
-    levelOrderTraversal(root);
-    cout<<endl;
-    pre_order(root);
+    Node* mini=minVal(root);
+    Node* maxi=maxVal(root);
+    cout<<"min value is "<<mini->data<<endl<<"max value is "<<maxi->data<<endl;
 
     return 1;
 }
